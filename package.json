@@ -1,0 +1,25 @@
+{
+  "name": "assignment4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "lint": "eslint */*.js --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristopherEnea/WSP-Assignment4.git"
+  },
+  "author": "Christopher Enea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristopherEnea/WSP-Assignment4/issues"
+  },
+  "homepage": "https://github.com/ChristopherEnea/WSP-Assignment4#readme",
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
