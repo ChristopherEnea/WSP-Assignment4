@@ -7,13 +7,12 @@ dotenv.config();
 
 const app = Express();
 
-
 (async () => {
-    await Mongoose.connect(process.env.CONNECTION_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-    });
-    app.listen(process.env.PORT);
-  })();
+  await Mongoose.connect(process.env.CONNECTION_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  });
+  app.listen(process.env.PORT);
+})();
