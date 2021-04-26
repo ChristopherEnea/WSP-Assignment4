@@ -1,4 +1,3 @@
-const { json } = require('express');
 const express = require('express');
 const dotenv = require('dotenv');
 const Mongoose = require('mongoose');
@@ -14,34 +13,22 @@ dotenv.config();
 
 app.use(express.static('public'));
 
-const items = [
-  'Blue',
-  'Red',
-  'White',
-  'Green',
-  'Black',
-  'Orange',
-];
-const recents = [];
-let buffer = '';
-
 io.on('connection', (socket) => {
-  socket.emit('welcome message', 'Welcome to Assignment 4!');
+  socket.emit('welcome message', 'Welcome to Assignment 4! Type a name to search and press enter to insert into database');
+
   socket.on('submit', (msg) => {
-    buffer = '';
-    recents.push(msg);
     const temp = { name: msg };
     NameService.createName(temp);
-    socket.emit('list', recents);
-    console.log(`submit: ${msg}`);
+    socket.emit('list', null);
   });
+
+  socket.on('delete', () => NameService.deleteNames());
+
   socket.on('input', (input) => {
-    buffer += input;
     console.log(input);
-    NameService.getNames(buffer).then((data) => {
+    NameService.getNames(input).then((data) => {
       const names = [];
       data.forEach((name) => {
-        console.log(name);
         names.push(name.name);
       });
       socket.emit('list', names);
@@ -56,6 +43,5 @@ io.on('connection', (socket) => {
     useFindAndModify: false,
     useCreateIndex: true,
   });
-  // console.log("listening on port: "  process.env.PORT)
   server.listen(process.env.PORT);
 })();

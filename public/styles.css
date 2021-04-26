@@ -5,7 +5,7 @@ body {
 }
 
 #form {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgb(173, 173, 173);
     padding: 0.25rem;
     position: fixed;
     top: 0;
