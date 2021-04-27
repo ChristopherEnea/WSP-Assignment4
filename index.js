@@ -25,7 +25,6 @@ io.on('connection', (socket) => {
   socket.on('delete', () => NameService.deleteNames());
 
   socket.on('input', (input) => {
-    console.log(input);
     NameService.getNames(input).then((data) => {
       const names = [];
       data.forEach((name) => {
